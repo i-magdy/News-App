@@ -1,11 +1,12 @@
-package com.devwarex.news.ui
+package com.devwarex.news.ui.launch
 
 import android.os.Bundle
 import android.util.Log
 import com.devwarex.news.R
+import com.devwarex.news.ui.BaseActivity
 
-class MainActivity : BaseActivity(
-    R.layout.activity_main
+class LaunchActivity : BaseActivity(
+    R.layout.activity_launch
 ) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
