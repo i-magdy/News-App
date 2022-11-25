@@ -1,6 +1,8 @@
 package com.devwarex.news.di
 
 import android.content.Context
+import com.devwarex.news.api.NewsApiClient
+import com.devwarex.news.api.NewsApiService
 import com.devwarex.news.data.DatastoreImpl
 import com.devwarex.news.db.AppDao
 import com.devwarex.news.db.AppRoomDatabase
@@ -17,10 +19,14 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun getAppDatastoreImpl(@ApplicationContext context: Context) = DatastoreImpl(context)
+    fun provideAppDatastoreImpl(@ApplicationContext context: Context) = DatastoreImpl(context)
 
     @Provides
     @Singleton
-    fun getAppDatabase(@ApplicationContext context: Context): AppDao = AppRoomDatabase.getInstance(context).appDbDao()
+    fun provideAppDatabase(@ApplicationContext context: Context): AppDao = AppRoomDatabase.getInstance(context).appDbDao()
+
+    @Provides
+    @Singleton
+    fun provideNewsApiService(): NewsApiService = NewsApiClient.create()
 
 }

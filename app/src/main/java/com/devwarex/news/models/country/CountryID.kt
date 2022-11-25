@@ -1,4 +1,4 @@
-package com.devwarex.news.models
+package com.devwarex.news.models.country
 
 data class CountryID(
     val root: String,

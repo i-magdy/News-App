@@ -1,9 +1,10 @@
-package com.devwarex.news.models
+package com.devwarex.news.models.country
 
 data class CountryModel(
     val name: CountryNameModel,
     val idd: CountryID?,
     val cca2: String,
     val flag: String,
-    val translations: Map<String,CountryTranslations>
+    val flags: CountryFlags,
+    val translations: Map<String, CountryTranslations>
 )

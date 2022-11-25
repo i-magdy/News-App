@@ -1,6 +1,6 @@
 package com.devwarex.news.api
 
-import com.devwarex.news.models.CountryModel
+import com.devwarex.news.models.country.CountryModel
 import retrofit2.Response
 import retrofit2.http.GET
 
