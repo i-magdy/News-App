@@ -4,7 +4,6 @@ import android.app.LocaleManager
 import android.os.Build
 import android.os.Bundle
 import android.os.LocaleList
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
@@ -33,7 +32,7 @@ open class BaseActivity : AppCompatActivity {
                     }else{
                         resources.configuration.locale.language
                     }
-                    if (lang != it){
+                    if (it.isNotEmpty() && lang != it){
                         changeAppLanguage(it)
                     }
                 }
