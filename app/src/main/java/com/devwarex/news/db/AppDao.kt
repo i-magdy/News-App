@@ -25,14 +25,14 @@ interface AppDao {
     @Query("select * from categories")
     fun getCategories(): Flow<List<Category>>
 
-    @Query("select COUNT(isFollowed) from categories")
+    @Query("select COUNT(value) from categories where isFollowed")
     fun getFollowedCategoriesCount(): Flow<Int>
 
     @Query("select * from categories where isFollowed")
     fun getFollowedCategories(): Flow<List<Category>>
 
-    @Update
-    suspend fun updateCategory(category: Category)
+    @Query("update categories set isFollowed = :isChecked where value = :value")
+    suspend fun updateCategory(value: String,isChecked: Boolean)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertCountry(country: Country)

@@ -27,6 +27,7 @@ class CountryScreen : Fragment(
         super.onViewCreated(view, savedInstanceState)
         val viewModel by viewModels<CountryViewModel>()
         viewModel.getCountries()
+        var isCountrySelected = false
         val selectedCountryTv = view.findViewById<TextView>(R.id.selected_country_tv)
         val recyclerView = view.findViewById<RecyclerView>(R.id.countries_rv)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -48,14 +49,17 @@ class CountryScreen : Fragment(
                     selectedCountryTv.text = it.selectedCountry?.let { country ->
                         country.flagSymbol + " " + if (lang == "ar") country.name_ar else country.name_en
                     }
+                    isCountrySelected = it.selectedCountry != null
                 }
             }
         }
         view.findViewById<MaterialButton>(
             R.id.next_button
         ).setOnClickListener {
-            viewModel.next()
-            Navigation.findNavController(view).navigate(R.id.action_navigate_to_category_screen)
+            if (isCountrySelected) {
+                viewModel.next()
+                Navigation.findNavController(view).navigate(R.id.action_navigate_to_category_screen)
+            }
         }
     }
 }
