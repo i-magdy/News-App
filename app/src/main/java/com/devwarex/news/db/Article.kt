@@ -12,5 +12,7 @@ data class Article(
     val publishedAt: Long,
     val author: String,
     val source: String,
-    val category: String
+    val category: String,
+    val isBooked: Boolean,
+    val isSearchedFor: Boolean
 )

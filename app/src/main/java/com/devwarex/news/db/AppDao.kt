@@ -4,11 +4,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AppDao {
+
+    @Query("select * from articles_table order by publishedAt asc")
+    fun getArticles(): Flow<List<ArticleRelation>>
 
     @Query("select * from countries_table")
     fun getCountries(): Flow<List<Country>>

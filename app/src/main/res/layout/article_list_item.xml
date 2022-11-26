@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="4dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/article_iv"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:src="@drawable/ic_photo"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/topic_iv"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_topic"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/article_title_tv"
+            app:layout_constraintStart_toStartOf="@+id/article_title_tv" />
+
+        <TextView
+            android:id="@+id/category_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="?attr/textAppearanceOverline"
+            app:layout_constraintBottom_toBottomOf="@+id/topic_iv"
+            app:layout_constraintStart_toEndOf="@+id/topic_iv"
+            app:layout_constraintTop_toTopOf="@+id/topic_iv"
+            tools:text="Sports" />
+
+        <ImageView
+            android:id="@+id/bookmark_iv"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_add_bookmark"
+            app:layout_constraintVertical_bias="0.5"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toTopOf="@+id/article_title_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/article_iv" />
+        <TextView
+            android:id="@+id/article_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            tools:text="Article Title"
+            android:textAppearance="?attr/textAppearanceListItem"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/article_iv"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:id="@+id/article_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textColor="?attr/colorControlNormal"
+            app:layout_constraintStart_toStartOf="@+id/article_title_tv"
+            app:layout_constraintTop_toBottomOf="@+id/article_title_tv"
+            tools:text="by Ibrahim , CNN" />
+
+        <TextView
+            android:id="@+id/article_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textColor="?attr/colorControlNormal"
+            app:layout_constraintStart_toStartOf="@+id/article_author"
+            app:layout_constraintTop_toBottomOf="@+id/article_author"
+            tools:text="Published: 14 Nov 14:30" />
+
+        <TextView
+            android:id="@+id/article_description_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textAlignment="viewStart"
+            android:textAppearance="?attr/textAppearanceListItemSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/article_date_tv"
+            app:layout_constraintVertical_bias="0"
+            tools:text="This is the description of articles talking about sport category" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
