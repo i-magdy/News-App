@@ -42,26 +42,27 @@ class RefreshArticlesRepo @Inject constructor(
 
     private fun saveArticles(
         data: Articles
-    ) = coroutine.launch{
+    ) = coroutine.launch {
         data.articles.forEach {
-            if (it.url != null && it.url.isNotEmpty())
-            db.insertArticle(
-                Article(
-                    url = it.url,
-                    title = it.title ?: "",
-                    description = it.description ?: "",
-                    img = it.urlToImage ?: "",
-                    author = it.author ?: "",
-                    source = it.source.name ?: "" ,
-                    category = data.category,
-                    publishedAt = it.publishedAt?.let { d -> ServerTimeUtil.convertServerDate(d) } ?: 0L,
-                    isBooked = false,
-                    isSearchedFor = false,
-                    keyWord = ""
+            if (it.url != null && it.url.isNotEmpty()) {
+                db.insertArticle(
+                    Article(
+                        url = it.url,
+                        title = it.title ?: "",
+                        description = it.description ?: "",
+                        img = it.urlToImage ?: "",
+                        author = it.author ?: "",
+                        source = it.source.name ?: "",
+                        category = data.category,
+                        publishedAt = it.publishedAt?.let { d -> ServerTimeUtil.convertServerDate(d) }
+                            ?: 0L,
+                        isBooked = false,
+                        isSearchedFor = false,
+                        keyWord = ""
+                    )
                 )
-            )
+            }
         }
     }
-
     fun cancelJob() = coroutine.cancel()
 }

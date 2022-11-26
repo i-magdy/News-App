@@ -9,11 +9,14 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface AppDao {
 
-    @Query("select * from articles_table order by publishedAt asc")
+    @Query("select * from articles_table order by publishedAt desc")
     fun getArticles(): Flow<List<ArticleRelation>>
 
     @Query("update articles_table set isBooked = :isBooked where url = :url")
     suspend fun updateArticle(url: String,isBooked: Boolean)
+
+    @Query("select * from articles_table where keyWord = :query and isSearchedFor order by publishedAt desc")
+    fun getSearchedArticles(query: String): Flow<List<ArticleRelation>>
 
     @Query("select * from countries_table")
     fun getCountries(): Flow<List<Country>>

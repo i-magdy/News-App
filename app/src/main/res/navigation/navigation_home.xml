@@ -39,5 +39,14 @@
         android:id="@+id/search_screen"
         android:label="search_screen"
         android:name="com.devwarex.news.ui.home.search.SearchScreen"
-        tools:layout="@layout/screen_search"/>
+        tools:layout="@layout/screen_search">
+        <action
+            android:id="@+id/action_open_web_view_from_search"
+            app:destination="@+id/article_web_view">
+            <argument
+                android:name="url"
+                app:argType="string"
+                android:defaultValue=""/>
+        </action>
+    </fragment>
 </navigation>
