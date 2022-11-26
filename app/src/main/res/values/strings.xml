@@ -7,6 +7,7 @@
     <string name="follow_country_message">Please select a country from list.</string>
     <string name="subscribe_title">Subscribe To Categories</string>
     <string name="subscribe_message">Subscribe to 3 of your favorite categories.\nTo Follow it\s news.</string>
+    <string name="settings_title">Edit App Settings</string>
     <string name="all_set_message">All set, you\'re ready</string>
     <string name="select_language_title">Select Language</string>
     <string name="start_button_title">Let\'s start</string>
@@ -16,4 +17,7 @@
     <string name="next_title">Next</string>
     <string name="finish_title">Finish</string>
     <string name="not_found">Not Found</string>
+    <string name="edit_categories_title">Edit Categories</string>
+    <string name="edit_country_title">Edit Followed country</string>
+    <string name="change_language_title">Change App Language</string>
 </resources>

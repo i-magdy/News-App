@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">نيوز أب</string>
+    <string name="offline_message">يرجى لااتصال بالانترنيت</string>
+    <string name="welcome_message">مرحبا بك في نيوز أب</string>
+    <string name="welcome_headline">حدد المقالات وعناوين الأخبار العاجلة من مصادر الأخبار والمدونات عبر الويب</string>
+    <string name="follow_country_title">إتبع أخبار بلد</string>
+    <string name="follow_country_message">فضلا إختر بلد من القائمه.</string>
+    <string name="subscribe_title">اشترك في مجموعه</string>
+    <string name="subscribe_message">اشترك في 3 من المجموعات المفضله لديك.</string>
+    <string name="settings_title">تعديل إعدادات التطبيق</string>
+    <string name="all_set_message">كل شئ جاهز</string>
+    <string name="select_language_title">إختر لغتك المفضله</string>
+    <string name="start_button_title">لنبداء</string>
+    <string name="arabic_title">عربي</string>
+    <string name="english_title">انجليزي</string>
+    <string name="selected_country_title">البلد المختار: </string>
+    <string name="next_title">التالي</string>
+    <string name="finish_title">إنتهى</string>
+    <string name="not_found">لا يوجد</string>
+    <string name="edit_categories_title">تعديل المجموعات</string>
+    <string name="edit_country_title">تعديل البلد</string>
+    <string name="change_language_title">تغير لغة التطبيق</string>
+</resources>

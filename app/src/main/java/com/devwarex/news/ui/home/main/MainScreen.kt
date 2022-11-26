@@ -32,6 +32,9 @@ class MainScreen : Fragment(
         view.findViewById<ImageView>(R.id.main_search_iv).setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_navigate_to_search)
         }
+        view.findViewById<ImageView>(R.id.main_setting_iv).setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_navigate_to_settings)
+        }
         val adapter = ArticlesAdapter(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)

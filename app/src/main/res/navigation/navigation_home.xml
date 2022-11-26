@@ -10,6 +10,8 @@
         tools:layout="@layout/screen_main"
         android:label="main_screen"
         android:name="com.devwarex.news.ui.home.main.MainScreen">
+        <action android:id="@+id/action_navigate_to_settings"
+            app:destination="@id/settings_screen"/>
         <action
             android:id="@+id/action_navigate_to_search"
             app:destination="@id/search_screen"/>
@@ -25,6 +27,10 @@
 
     </fragment>
 
+    <fragment android:name="com.devwarex.news.ui.home.settings.SettingsScreen"
+        tools:layout="@layout/screen_settings"
+        android:label="settings_screen"
+        android:id="@+id/settings_screen"/>
     <fragment
         android:id="@+id/article_web_view"
         android:label="web_view"
