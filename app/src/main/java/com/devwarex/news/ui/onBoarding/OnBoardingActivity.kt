@@ -29,7 +29,6 @@ class OnBoardingActivity : BaseActivity(
                     viewId = R.id.boarding_nav_host_fragment
                 )
                 viewModel.currentStep.collect {
-                    Log.e("step",it.toString())
                     when (it) {
                         2 -> {
                             val dest = nav.currentDestination

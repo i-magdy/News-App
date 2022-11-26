@@ -9,10 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devwarex.news.R
 import com.devwarex.news.adapters.CountriesAdapter
+import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -48,6 +50,12 @@ class CountryScreen : Fragment(
                     }
                 }
             }
+        }
+        view.findViewById<MaterialButton>(
+            R.id.next_button
+        ).setOnClickListener {
+            viewModel.next()
+            Navigation.findNavController(view).navigate(R.id.action_navigate_to_category_screen)
         }
     }
 }

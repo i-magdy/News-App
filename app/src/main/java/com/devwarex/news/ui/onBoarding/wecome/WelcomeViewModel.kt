@@ -23,6 +23,10 @@ class WelcomeViewModel @Inject constructor(
 
     fun start() = viewModelScope.launch { datastore.updateCurrentBoardStep(2) }
     fun updateCountry(country: String) = viewModelScope.launch {
-        datastore.updateCountry(country)
+        datastore.selectedCountry.collect { currentCountry ->
+            if (currentCountry.isEmpty()) {
+                datastore.updateCountry(country)
+            }
+        }
     }
 }
