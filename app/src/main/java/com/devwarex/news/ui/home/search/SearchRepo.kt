@@ -21,6 +21,7 @@ class SearchRepo @Inject constructor(
     private val repo: SearchInArticlesRepo
 ) {
     val articles = MutableStateFlow<List<ArticleRelation>>(emptyList())
+    val categories = db.getFollowedCategories()
     private val coroutine = CoroutineScope(Dispatchers.Default)
     private var category = "general"
     private var query = ""
@@ -37,6 +38,10 @@ class SearchRepo @Inject constructor(
         datastore.selectedCountry.collect{ code ->
             repo.search(category = category, search = query, countryCode = code)
         }
+    }
+
+    fun setCategory(category: String){
+        this.category = category
     }
 
     suspend fun updateArticle(

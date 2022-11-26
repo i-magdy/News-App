@@ -2,8 +2,11 @@ package com.devwarex.news.ui.home.search
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -21,11 +24,12 @@ class SearchScreen : Fragment(
     R.layout.screen_search
 ), ArticlesAdapter.ArticleListener {
 
-    val viewModel by viewModels<SearchViewModel>()
+    val viewModel by activityViewModels<SearchViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = ArticlesAdapter(this)
         val recyclerView = view.findViewById<RecyclerView>(R.id.articles_rv)
+        val categoryTv = view.findViewById<TextView>(R.id.search_category_title)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
         view.findViewById<SearchView>(R.id.searchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener{
@@ -44,6 +48,10 @@ class SearchScreen : Fragment(
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED){
                 viewModel.articles.collect{adapter.setArticles(it)}
             }
+        }
+        view.findViewById<ImageView>(R.id.search_filter).setOnClickListener {
+            val dialog = CategoriesDialog()
+            dialog.show(parentFragmentManager,"")
         }
     }
 

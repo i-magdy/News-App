@@ -14,10 +14,14 @@ class SearchViewModel @Inject constructor(
 ): ViewModel(){
 
     val articles: StateFlow<List<ArticleRelation>> = repo.articles
+    val categories = repo.categories
     fun search(text: String) = viewModelScope.launch {
         repo.search(query = text)
     }
 
+    fun setCategory(category: String){
+        repo.setCategory(category)
+    }
     fun updateArticle(
         url: String,
         isBooked: Boolean
