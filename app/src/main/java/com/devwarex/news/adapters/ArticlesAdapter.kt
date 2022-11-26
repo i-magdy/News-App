@@ -37,7 +37,7 @@ class ArticlesAdapter(
         }
 
         fun onBind(article: ArticleRelation){
-            glide.load(article.article.img).into(imgView)
+            glide.load(article.article.img).error(R.drawable.ic_photo).into(imgView)
             title.text = article.article.title
             description.text = article.article.description
             author.text = article.article.author+", " +article.article.source

@@ -48,13 +48,13 @@ class RefreshArticlesRepo @Inject constructor(
             db.insertArticle(
                 Article(
                     url = it.url,
-                    title = it.title,
-                    description = it.description,
+                    title = it.title ?: "",
+                    description = it.description ?: "",
                     img = it.urlToImage ?: "",
                     author = it.author ?: "",
-                    source = it.source.name,
+                    source = it.source.name ?: "" ,
                     category = data.category,
-                    publishedAt = ServerTimeUtil.convertServerDate(it.publishedAt),
+                    publishedAt = it.publishedAt?.let { d -> ServerTimeUtil.convertServerDate(d) } ?: 0L,
                     isBooked = false,
                     isSearchedFor = false,
                     keyWord = ""

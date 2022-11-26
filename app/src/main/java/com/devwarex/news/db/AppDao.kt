@@ -12,6 +12,9 @@ interface AppDao {
     @Query("select * from articles_table order by publishedAt asc")
     fun getArticles(): Flow<List<ArticleRelation>>
 
+    @Query("update articles_table set isBooked = :isBooked where url = :url")
+    suspend fun updateArticle(url: String,isBooked: Boolean)
+
     @Query("select * from countries_table")
     fun getCountries(): Flow<List<Country>>
 
