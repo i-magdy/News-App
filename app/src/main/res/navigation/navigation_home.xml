@@ -14,6 +14,26 @@
             android:id="@+id/action_navigate_to_search"
             app:destination="@id/search_screen"/>
 
+        <action
+            android:id="@+id/action_open_web_view"
+            app:destination="@+id/article_web_view">
+            <argument
+                android:name="url"
+                app:argType="string"
+                android:defaultValue=""/>
+        </action>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/article_web_view"
+        android:label="web_view"
+        tools:layout="@layout/web_view_screen"
+        android:name="com.devwarex.news.ui.home.WebViewScreen">
+        <argument
+            android:name="url"
+            app:argType="string"
+            android:defaultValue=""/>
     </fragment>
     <fragment
         android:id="@+id/search_screen"

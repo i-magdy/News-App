@@ -45,14 +45,19 @@ class MainScreen : Fragment(
     }
 
     override fun onArticleClick(articleUrl: String) {
-        val i = Intent(Intent.ACTION_VIEW).apply {
+        /*val i = Intent(Intent.ACTION_VIEW).apply {
             data = Uri.parse(articleUrl)
         }
         try {
             startActivity(i)
         }catch (e: ActivityNotFoundException){
             Log.e("web_view",e.message!!)
+        }*/
+        val action = MainScreenDirections.actionOpenWebView().apply {
+            url = articleUrl
         }
+
+        Navigation.findNavController(requireView()).navigate(action)
     }
 
     override fun bookmarkArticle(articleUrl: String, isBooked: Boolean) {
