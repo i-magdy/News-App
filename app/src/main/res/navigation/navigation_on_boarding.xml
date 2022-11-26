@@ -8,7 +8,27 @@
     <fragment
         android:id="@+id/welcome_screen"
         android:name="com.devwarex.news.ui.onBoarding.wecome.WelcomeScreen"
+        android:label="welcome_screen"
         tools:layout="@layout/screen_welcome">
-
+        <action
+            android:id="@+id/action_navigate_to_country_screen"
+            app:destination="@id/follow_country_screen"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/follow_country_screen"
+        android:name="com.devwarex.news.ui.onBoarding.country.CountryScreen"
+        android:label="country_screen"
+        tools:layout="@layout/screen_country">
+        <action
+            android:id="@+id/action_navigate_to_category_screen"
+            app:destination="@id/subscribe_category_screen"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/subscribe_category_screen"
+        android:name="com.devwarex.news.ui.onBoarding.category.CategoryScreen"
+        android:label="category_screen"
+        tools:layout="@layout/screen_category"/>
+
 </navigation>

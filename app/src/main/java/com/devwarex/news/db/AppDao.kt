@@ -13,6 +13,15 @@ interface AppDao {
     @Query("select * from countries_table")
     fun getCountries(): Flow<List<Country>>
 
+    @Query("select * from countries_table order by name_ar")
+    fun getCountriesByArabic(): Flow<List<Country>>
+
+    @Query("select * from countries_table order by name_en")
+    fun getCountriesByEnglish(): Flow<List<Country>>
+
+    @Query("select * from countries_table where code = :code")
+    fun getCountryByCode(code: String): Flow<Country>
+
     @Query("select * from categories")
     fun getCategories(): Flow<List<Category>>
 

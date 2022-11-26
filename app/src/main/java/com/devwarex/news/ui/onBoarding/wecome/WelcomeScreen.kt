@@ -7,10 +7,14 @@ import android.telephony.TelephonyManager
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.Navigation
 import com.devwarex.news.R
 import com.google.android.material.button.MaterialButton
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class WelcomeScreen : Fragment(
@@ -29,15 +33,21 @@ class WelcomeScreen : Fragment(
             resources.configuration.locale.language
         }
         val viewModel by viewModels<WelcomeViewModel>()
-        lifecycleScope.launchWhenCreated {
-            viewModel.language.collect{
-                if(it.isNotEmpty()){ lang = it }
-                if (lang == "ar"){
-                    arabicButton.strokeWidth = 2
-                    arabicButton.setTextColor(resources.getColor(R.color.blue_400,null))
-                }else{
-                    englishButton.strokeWidth = 2
-                    englishButton.setTextColor(resources.getColor(R.color.blue_400,null))
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.language.collect {
+                        if (it.isNotEmpty()) {
+                            lang = it
+                        }
+                        if (lang == "ar") {
+                            arabicButton.strokeWidth = 2
+                            arabicButton.setTextColor(resources.getColor(R.color.blue_400, null))
+                        } else {
+                            englishButton.strokeWidth = 2
+                            englishButton.setTextColor(resources.getColor(R.color.blue_400, null))
+                        }
+                    }
                 }
             }
         }
@@ -47,6 +57,9 @@ class WelcomeScreen : Fragment(
         )
         arabicButton.setOnClickListener { viewModel.changeAppLanguage("ar") }
         englishButton.setOnClickListener { viewModel.changeAppLanguage("en") }
-        startButton.setOnClickListener { viewModel.start() }
+        startButton.setOnClickListener {
+            viewModel.start()
+            Navigation.findNavController(view).navigate(R.id.action_navigate_to_country_screen)
+        }
     }
 }
