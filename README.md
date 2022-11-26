@@ -1,5 +1,6 @@
 # News App
 Locate articles and breaking news headlines from news sources and blogs across the web.
+[APK File](https://drive.google.com/file/d/1uUJKJU-gaEDtZ4qmwPxqUNaAOVsJ3-je/view?usp=share_link)
 
 #### This app is a task for [ITWorx](https://itworx.education/).
 
