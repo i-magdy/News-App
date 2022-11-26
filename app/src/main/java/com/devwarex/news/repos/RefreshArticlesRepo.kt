@@ -56,7 +56,8 @@ class RefreshArticlesRepo @Inject constructor(
                     category = data.category,
                     publishedAt = ServerTimeUtil.convertServerDate(it.publishedAt),
                     isBooked = false,
-                    isSearchedFor = false
+                    isSearchedFor = false,
+                    keyWord = ""
                 )
             )
         }

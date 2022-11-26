@@ -1,6 +1,7 @@
 package com.devwarex.news.adapters
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.devwarex.news.R
 import com.devwarex.news.db.ArticleRelation
+import com.devwarex.news.util.DateFormatUtil
 
 class ArticlesAdapter(
     val listener: ArticleListener
@@ -35,7 +37,26 @@ class ArticlesAdapter(
         }
 
         fun onBind(article: ArticleRelation){
-
+            glide.load(article.article.img).into(imgView)
+            title.text = article.article.title
+            description.text = article.article.description
+            author.text = article.article.author+", " +article.article.source
+            val lang = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                itemView.resources.configuration.locales[0].language
+            } else {
+                itemView.resources.configuration.locale.language
+            }
+            if (lang == "ar"){
+                category.text = article.category?.name_ar
+            }else{
+                category.text = article.category?.name_en
+            }
+            dateTv.text = DateFormatUtil.format(article.article.publishedAt)
+            if (article.article.isBooked){
+                bookmark.setImageResource(R.drawable.ic_bookmark)
+            }else{
+                bookmark.setImageResource(R.drawable.ic_add_bookmark)
+            }
         }
 
         override fun onClick(v: View?) {
