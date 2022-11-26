@@ -21,4 +21,7 @@ class LaunchViewModel @Inject constructor(
             isOnline = isOnline
         )
     }
+
+    fun cancelJob() = repo.cancelJob()
+
 }

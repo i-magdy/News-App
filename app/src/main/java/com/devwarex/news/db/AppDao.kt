@@ -40,4 +40,6 @@ interface AppDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertCategory(country: List<Category>)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertArticle(article: Article)
 }

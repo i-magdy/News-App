@@ -1,7 +1,9 @@
 package com.devwarex.news.ui.onBoarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -9,6 +11,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation
 import com.devwarex.news.R
 import com.devwarex.news.ui.BaseActivity
+import com.devwarex.news.ui.launch.LaunchActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -45,7 +48,12 @@ class OnBoardingActivity : BaseActivity(
                                 nav.navigate(R.id.action_navigate_to_category_screen)
                             }
                         }
-                        4 -> {}
+                        4 -> {
+                            Toast.makeText(this@OnBoardingActivity,getString(R.string.all_set_message),Toast.LENGTH_LONG).show()
+                            val i = Intent(this@OnBoardingActivity,LaunchActivity::class.java)
+                            startActivity(i)
+                            finish()
+                        }
                         else -> Log.d("boarding_step", it.toString())
                     }
                 }

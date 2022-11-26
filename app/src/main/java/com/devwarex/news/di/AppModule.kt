@@ -1,6 +1,7 @@
 package com.devwarex.news.di
 
 import android.content.Context
+import com.devwarex.news.R
 import com.devwarex.news.api.NewsApiClient
 import com.devwarex.news.api.NewsApiService
 import com.devwarex.news.data.DatastoreImpl
@@ -28,5 +29,10 @@ class AppModule {
     @Provides
     @Singleton
     fun provideNewsApiService(): NewsApiService = NewsApiClient.create()
+
+    @Provides
+    @Singleton
+    @NamedApiKey
+    fun provideNewsApiKey(@ApplicationContext context: Context): String = context.getString(R.string.api_key)
 
 }

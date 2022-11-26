@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.devwarex.news.R
 import com.devwarex.news.ui.BaseActivity
+import com.devwarex.news.ui.home.HomeActivity
 import com.devwarex.news.ui.onBoarding.OnBoardingActivity
 import com.devwarex.news.util.NetworkUtil
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +33,10 @@ class LaunchActivity : BaseActivity(
                 }
 
                 if (it.navigateToHome){
-
+                    val i = Intent(this@LaunchActivity,HomeActivity::class.java)
+                    viewModel.cancelJob()
+                    startActivity(i)
+                    finish()
                 }
             }
         }
