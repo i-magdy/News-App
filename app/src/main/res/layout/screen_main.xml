@@ -44,15 +44,21 @@
         app:layout_constraintEnd_toStartOf="@+id/main_setting_iv"
         app:layout_constraintTop_toTopOf="@+id/main_setting_iv" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/articles_rv"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:listitem="@layout/article_list_item"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/main_swipe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_logo_iv" />
+        app:layout_constraintTop_toBottomOf="@+id/main_logo_iv">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/articles_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/article_list_item"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
