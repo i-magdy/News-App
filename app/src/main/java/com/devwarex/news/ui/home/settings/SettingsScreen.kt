@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devwarex.news.R
 import com.devwarex.news.adapters.CountriesAdapter
@@ -42,7 +42,7 @@ class SettingsScreen : Fragment(
         })
         view.findViewById<RecyclerView>(R.id.countries_rv).apply {
             this.adapter = adapter
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context,2)
         }
         val arabicButton = view.findViewById<MaterialButton>(R.id.arabic_button)
         val englishButton = view.findViewById<MaterialButton>(R.id.english_button)

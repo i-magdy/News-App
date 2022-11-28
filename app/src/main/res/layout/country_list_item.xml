@@ -6,9 +6,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:backgroundTint="?attr/colorSurface"
     app:strokeWidth="0dp"
+    app:cardCornerRadius="8dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginBottom="26dp"
     android:id="@+id/country_list_item_card"
     app:strokeColor="?attr/colorSecondary"
-    android:layout_margin="2dp"
     app:cardElevation="2dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,26 +19,28 @@
 
         <ImageView
             android:id="@+id/country_flag_iv"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="0dp"
+            android:layout_height="88dp"
             android:layout_margin="16dp"
             android:src="@drawable/ic_flag"
+            app:layout_constraintVertical_bias="0"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/country_name_list_item"
             android:layout_width="0dp"
-            android:layout_margin="16dp"
-            android:textAlignment="viewStart"
-            android:textAppearance="?attr/textAppearanceListItem"
             android:layout_height="wrap_content"
-            tools:text="Country"
-            app:layout_constraintBottom_toBottomOf="@+id/country_flag_iv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/country_flag_iv"
-            app:layout_constraintTop_toTopOf="@+id/country_flag_iv" />
+            android:layout_margin="16dp"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceListItem"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/country_flag_iv"
+            app:layout_constraintStart_toStartOf="@+id/country_flag_iv"
+            app:layout_constraintTop_toBottomOf="@+id/country_flag_iv"
+            tools:text="Country" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

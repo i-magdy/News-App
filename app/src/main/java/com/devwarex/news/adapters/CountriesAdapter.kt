@@ -32,6 +32,7 @@ class CountriesAdapter(
             view.setOnClickListener(this)
         }
 
+        @SuppressLint("ResourceAsColor")
         fun onBind(country: Country){
             glide.load(country.flagUrl).into(image)
             val lang = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -45,7 +46,7 @@ class CountriesAdapter(
                 title.text = country.name_en
             }
             if (country.code == selectedCode){
-                card.strokeWidth = 2
+                card.strokeWidth = 3
             }else{
                 card.strokeWidth = 0
             }

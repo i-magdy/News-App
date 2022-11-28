@@ -10,7 +10,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devwarex.news.R
 import com.devwarex.news.adapters.CountriesAdapter
@@ -29,14 +29,15 @@ class CountryScreen : Fragment(
         viewModel.getCountries()
         var isCountrySelected = false
         val selectedCountryTv = view.findViewById<TextView>(R.id.selected_country_tv)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.countries_rv)
-        recyclerView.layoutManager = LinearLayoutManager(context)
         val adapter = CountriesAdapter(object : CountriesAdapter.CountryListener{
             override fun onCountryClick(code: String) {
                 viewModel.updateSelectedCountry(code)
             }
         })
-        recyclerView.adapter = adapter
+        view.findViewById<RecyclerView>(R.id.countries_rv).apply {
+            this.layoutManager = GridLayoutManager(context,2)
+            this.adapter = adapter
+        }
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
                 viewModel.uiState.collect{
