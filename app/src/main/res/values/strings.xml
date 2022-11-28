@@ -20,4 +20,5 @@
     <string name="edit_categories_title">Edit Categories</string>
     <string name="edit_country_title">Edit Followed country</string>
     <string name="change_language_title">Change App Language</string>
+    <string name="categories_error_message">Please select at least 3 categories</string>
 </resources>

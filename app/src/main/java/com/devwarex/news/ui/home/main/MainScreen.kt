@@ -1,10 +1,6 @@
 package com.devwarex.news.ui.home.main
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
@@ -39,9 +35,18 @@ class MainScreen : Fragment(
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
         lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED){
-                viewModel.articles.collect{
-                    adapter.setArticles(it)
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED){
+                launch {
+                    viewModel.articles.collect{
+                        adapter.setArticles(it)
+                    }
+                }
+                launch {
+                    viewModel.categoriesCount.collect{ count ->
+                        if (count < 3){
+                            Navigation.findNavController(view).navigate(R.id.action_navigate_to_settings)
+                        }
+                    }
                 }
             }
         }
@@ -59,7 +64,6 @@ class MainScreen : Fragment(
         val action = MainScreenDirections.actionOpenWebView().apply {
             url = articleUrl
         }
-
         Navigation.findNavController(requireView()).navigate(action)
     }
 

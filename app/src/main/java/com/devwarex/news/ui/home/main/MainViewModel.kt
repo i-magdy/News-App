@@ -13,6 +13,7 @@ class MainViewModel @Inject constructor(
 ): ViewModel() {
 
     val articles = db.getArticles()
+    val categoriesCount = db.getFollowedCategoriesCount()
 
     fun updateArticle(
         url: String,

@@ -3,6 +3,7 @@ package com.devwarex.news.ui.home.settings
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -20,6 +21,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 
 @AndroidEntryPoint
 class SettingsScreen : Fragment(
@@ -37,6 +39,7 @@ class SettingsScreen : Fragment(
         val recyclerView = view.findViewById<RecyclerView>(R.id.countries_rv)
         val arabicButton = view.findViewById<MaterialButton>(R.id.arabic_button)
         val englishButton = view.findViewById<MaterialButton>(R.id.english_button)
+        val categoryErrorTv = view.findViewById<TextView>(R.id.categories_error_tv)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val adapter = CountriesAdapter(object : CountriesAdapter.CountryListener{
             override fun onCountryClick(code: String) {
@@ -68,6 +71,10 @@ class SettingsScreen : Fragment(
                         englishButton.setTextColor(resources.getColor(R.color.blue_400, null))
                     }
                 }
+
+                launch { categoriesViewModel.count.collect{
+                    categoryErrorTv.visibility = if (it < 3) View.VISIBLE else View.GONE
+                } }
             }
         }
         arabicButton.setOnClickListener { viewModel.changeAppLanguage("ar") }

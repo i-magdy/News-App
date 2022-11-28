@@ -21,4 +21,6 @@
     <string name="edit_categories_title">تعديل المجموعات</string>
     <string name="edit_country_title">تعديل البلد</string>
     <string name="change_language_title">تغير لغة التطبيق</string>
+    <string name="categories_error_message">فضلا إختر ع الاقل 3 مجموعات</string>
+
 </resources>
