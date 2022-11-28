@@ -21,7 +21,6 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 
 @AndroidEntryPoint
 class SettingsScreen : Fragment(
@@ -36,17 +35,18 @@ class SettingsScreen : Fragment(
         val viewModel by viewModels<SettingsViewModel>()
         countriesViewModel.getCountries()
         val chipGroup = view.findViewById<ChipGroup>(R.id.categories_chip_group)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.countries_rv)
-        val arabicButton = view.findViewById<MaterialButton>(R.id.arabic_button)
-        val englishButton = view.findViewById<MaterialButton>(R.id.english_button)
-        val categoryErrorTv = view.findViewById<TextView>(R.id.categories_error_tv)
-        recyclerView.layoutManager = LinearLayoutManager(context)
         val adapter = CountriesAdapter(object : CountriesAdapter.CountryListener{
             override fun onCountryClick(code: String) {
                 countriesViewModel.updateSelectedCountry(code)
             }
         })
-        recyclerView.adapter = adapter
+        view.findViewById<RecyclerView>(R.id.countries_rv).apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+        }
+        val arabicButton = view.findViewById<MaterialButton>(R.id.arabic_button)
+        val englishButton = view.findViewById<MaterialButton>(R.id.english_button)
+        val categoryErrorTv = view.findViewById<TextView>(R.id.categories_error_tv)
         val lang =  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             resources.configuration.locales[0].language
         } else {

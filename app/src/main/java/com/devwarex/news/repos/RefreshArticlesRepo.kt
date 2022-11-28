@@ -26,6 +26,7 @@ class RefreshArticlesRepo @Inject constructor(
             }
         }
     }
+
     fun sync(
         countryCode: String
     ) = coroutine.launch {
@@ -58,7 +59,8 @@ class RefreshArticlesRepo @Inject constructor(
                             ?: 0L,
                         isBooked = false,
                         isSearchedFor = false,
-                        keyWord = ""
+                        keyWord = "",
+                        countryCode = data.code
                     )
                 )
             }

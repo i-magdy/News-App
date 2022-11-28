@@ -15,5 +15,6 @@ data class Article(
     val category: String,
     val isBooked: Boolean,
     val isSearchedFor: Boolean,
-    val keyWord: String
+    val keyWord: String,
+    val countryCode: String
 )

@@ -9,6 +9,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface AppDao {
 
+    @Query("select * from articles_table where countryCode = :code order by publishedAt desc")
+    fun getArticlesByCountry(code: String): Flow<List<ArticleRelation>>
+
     @Query("select * from articles_table order by publishedAt desc")
     fun getArticles(): Flow<List<ArticleRelation>>
 

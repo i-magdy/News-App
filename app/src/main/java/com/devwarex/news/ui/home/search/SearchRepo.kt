@@ -73,7 +73,8 @@ class SearchRepo @Inject constructor(
                             ?: 0L,
                         isBooked = false,
                         isSearchedFor = true,
-                        keyWord = data.search
+                        keyWord = data.search,
+                        countryCode = data.code
                     )
                 )
             }

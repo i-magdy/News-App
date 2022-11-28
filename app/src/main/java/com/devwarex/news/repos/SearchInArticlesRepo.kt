@@ -33,7 +33,8 @@ class SearchInArticlesRepo @Inject constructor(
                         SearchedArticles(
                             category = category,
                             articles = body.articles,
-                            search = search
+                            search = search,
+                            code = countryCode
                         )
                     )
                 }

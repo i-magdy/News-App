@@ -28,7 +28,8 @@ class ArticlesByCategoryRepo @Inject constructor(
                 if (body != null && body.status == "ok"){
                     articles.emit(Articles(
                         category = category,
-                        articles = body.articles
+                        articles = body.articles,
+                        code = countryCode
                     ))
                 }
             }
